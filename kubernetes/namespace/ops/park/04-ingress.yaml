@@ -1,0 +1,15 @@
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: park
+  namespace: ops
+spec:
+  rules:
+  - host: dp.drm.lab.emc.com
+    http:
+      paths:
+      - path: /
+        backend:
+          serviceName: park
+          servicePort: 80

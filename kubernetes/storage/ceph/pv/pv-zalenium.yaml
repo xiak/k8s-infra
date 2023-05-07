@@ -1,0 +1,61 @@
+# zalenium 需要共享 data 和  video 盘, 所以需要 ReadWriteMany 的 cephfs
+# 如果发现创建的 pod 不断重启, 请确认 cephfs 中目录的权限是否为 1000:1000, chown -R 1000:1000 /ceph
+# > mount -t ceph ceph1:6789,ceph2:6789,ceph3:6789:/ /ceph -o name=admin,secret=AQDgKxVbXYbzKBAABOQ0IixiS0OsbUB4xxxxxx==
+# > ls /ceph -l
+# total 0
+# drwxr-xr-x. 2 1000 1000 0 Aug 17 17:45 infra
+# drwxr-xr-x. 3 1000 1000 1 Aug 17 17:46 ops
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-zalenium-data
+  labels:
+    id: prod000003
+    app: zalenium
+    type: ceph-fs
+spec:
+  capacity:
+    storage: 512Gi
+  accessModes:
+    - ReadWriteMany
+  cephfs:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    path: /ops/zalenium/data
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-zalenium-video
+  labels:
+    id: prod000004
+    app: zalenium
+    type: ceph-fs
+spec:
+  capacity:
+    storage: 1Ti
+  accessModes:
+    - ReadWriteMany
+  cephfs:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    path: /ops/zalenium/video
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+

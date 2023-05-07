@@ -1,0 +1,27 @@
+apiVersion: tekton.dev/v1beta1
+kind: TaskRun
+metadata:
+  name: build-robot
+spec:
+  serviceAccountName: hub-user-robot
+  taskRef:
+    name: build-tool
+  params:
+    - name: pathToDockerFile
+      value: $(resources.inputs.git-repo.path)/docker/robot
+    - name: pathToContext
+      value: $(resources.inputs.git-repo.path)
+    - name: registry
+      value: hub.datadomain.com
+    - name: tag
+      value: 0.0.1
+
+  resources:
+    inputs:
+      - name: git-repo
+        resourceRef:
+          name: git-test-infra
+    outputs:
+      - name: hub-repo
+        resourceRef:
+          name: hub-robot

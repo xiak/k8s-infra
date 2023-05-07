@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-rpm
+  namespace: ops
+  labels:
+    id: prod000017
+    app: repo-rpm
+    storage: cephfs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 512Gi
+  selector:
+    matchLabels:
+      id: prod000017
+      app: repo-rpm
+      storage: cephfs

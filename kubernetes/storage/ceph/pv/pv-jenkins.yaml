@@ -1,0 +1,28 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-jenkins
+  labels:
+    id: prod000011
+    app: jenkins
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 512Gi
+  accessModes:
+  - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: jenkins
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain

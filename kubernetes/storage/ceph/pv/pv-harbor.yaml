@@ -1,0 +1,173 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-harbor-registry
+  labels:
+    id: prod000005
+    app: harbor
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes:
+    - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: harbor.registry
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-harbor-chart
+  labels:
+    id: prod000006
+    app: harbor
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: harbor.chart
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-harbor-job
+  labels:
+    id: prod000007
+    app: harbor
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 25Gi
+  accessModes:
+    - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: harbor.job
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-harbor-db
+  labels:
+    id: prod000008
+    app: harbor
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 250Gi
+  accessModes:
+    - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: harbor.db
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-harbor-redis
+  labels:
+    id: prod000009
+    app: harbor
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: harbor.redis
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-harbor-trivy
+  labels:
+    id: prod000010
+    app: harbor
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 50Gi
+  accessModes:
+    - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: harbor.trivy
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain

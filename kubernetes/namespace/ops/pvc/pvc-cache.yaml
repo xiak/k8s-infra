@@ -1,0 +1,110 @@
+# npm
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-cache-npm
+  namespace: ops
+  labels:
+    id: prod000013
+    app: cache-npm
+    storage: cephfs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 128Gi
+  selector:
+    matchLabels:
+      id: prod000013
+      app: cache-npm
+      storage: cephfs
+# for job: mc-build-code
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-cache-mvn-code
+  namespace: ops
+  labels:
+    id: prod000014
+    app: cache-mvn-code
+    storage: cephfs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  selector:
+    matchLabels:
+      id: prod000014
+      app: cache-mvn-code
+      storage: cephfs
+# for job: mc-build-all
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-cache-mvn-all
+  namespace: ops
+  labels:
+    id: prod000015
+    app: cache-mvn-all
+    storage: cephfs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  selector:
+    matchLabels:
+      id: prod000015
+      app: cache-mvn-all
+      storage: cephfs
+# for job: mc-build-rpm
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-cache-mvn-rpm
+  namespace: ops
+  labels:
+    id: prod000016
+    app: cache-mvn-rpm
+    storage: cephfs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  selector:
+    matchLabels:
+      id: prod000016
+      app: cache-mvn-rpm
+      storage: cephfs
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-cache-marker
+  namespace: ops
+  labels:
+    id: prod000019
+    app: cache-marker
+    storage: cephfs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 20Gi
+  selector:
+    matchLabels:
+      id: prod000019
+      app: cache-marker
+      storage: cephfs

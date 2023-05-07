@@ -1,0 +1,62 @@
+---
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: gitea-mysql-password
+data:
+  mysql-root-password: examplePass                # echo -n examplePass | base64  结果 examplePass
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gitea-mysql
+spec:
+  selector:
+    matchLabels:
+      app: gitea
+      type: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: gitea
+        type: mysql
+    spec:
+      containers:
+      - name: gitea-mysql
+        image: mysql:5.7
+        env:
+        - name: MYSQL_ROOT_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: gitea-mysql-password
+              key: mysql-root-password
+              optional: false
+        ports:
+        - containerPort: 3306
+          name: mysql
+        resources: {}
+        volumeMounts:
+        - name: ceph-volume
+          mountPath: /var/lib/mysql
+          subPath: mysql
+      volumes:
+      - name: ceph-volume
+        persistentVolumeClaim:
+          claimName: pvc-gitea-mysql
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitea-mysql
+spec:
+  ports:
+  - port: 3306
+  selector:
+    app: gitea
+    type: mysql
+  clusterIP: None

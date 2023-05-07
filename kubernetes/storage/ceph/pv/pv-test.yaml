@@ -1,0 +1,27 @@
+# rpm
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-test-log
+  labels:
+    id: prod000018
+    app: test-log
+    storage: cephfs
+spec:
+  capacity:
+    storage: 512Gi
+  accessModes:
+    - ReadWriteMany
+  cephfs:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    path: /log/test
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain

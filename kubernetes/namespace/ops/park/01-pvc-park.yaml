@@ -1,0 +1,21 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-park-config
+  namespace: ops
+  labels:
+    id: prod000020
+    app: park
+    type: ceph-fs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Gi
+  selector:
+    matchLabels:
+      id: prod000020
+      app: park
+      type: ceph-fs

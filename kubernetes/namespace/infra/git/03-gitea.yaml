@@ -1,0 +1,82 @@
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: gitea
+  labels:
+    app: gitea
+    type: app
+spec:
+  selector:
+    matchLabels:
+      app: gitea
+      type: app
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: gitea
+        type: app
+    spec:
+      containers:
+      - name: gitea
+        image: gitea/gitea:1.13.0
+        imagePullPolicy: IfNotPresent
+        ports:
+        - name: http
+          containerPort: 3000
+        - name: ssh
+          containerPort: 22
+        resources: {}
+        livenessProbe:
+          tcpSocket:
+            port: http
+          initialDelaySeconds: 200
+          timeoutSeconds: 1
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 10
+        readinessProbe:
+          tcpSocket:
+            port: http
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          failureThreshold: 3
+        volumeMounts:
+        - name: data-volume
+          mountPath: /data
+#        - name: cert-volume
+#          mountPath: /certs
+#        - name: config-volume
+#          mountPath: /configs
+      volumes:
+      - name: data-volume
+        persistentVolumeClaim:
+          claimName: pvc-gitea
+#      - name: cert-volume
+#        secret:
+#          secretName: gitea-cert    ## Create this by commond first
+#      - name: config-volume
+#        configMap:
+#          name: gitea-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: gitea
+  labels:
+    app: gitea
+    type: service
+spec:
+  selector:
+    app: gitea
+    type: app
+  ports:
+  - name: http
+    port: 80
+    targetPort: 3000
+  - name: ssh
+    port: 22
+    targetPort: 22

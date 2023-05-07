@@ -1,0 +1,136 @@
+# rpm
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cache-npm
+  labels:
+    id: prod000013
+    app: cache-npm
+    storage: cephfs
+spec:
+  capacity:
+    storage: 128Gi
+  accessModes:
+    - ReadWriteMany
+  cephfs:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    path: /cache/npm
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+# mvn
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cache-mvn-code
+  labels:
+    id: prod000014
+    app: cache-mvn-code
+    storage: cephfs
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  cephfs:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.98.151.56:6789
+      - 10.10.10.102:6789
+    path: /cache/mvn/code
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cache-mvn-all
+  labels:
+    id: prod000015
+    app: cache-mvn-all
+    storage: cephfs
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  cephfs:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.98.151.56:6789
+      - 10.10.10.102:6789
+    path: /cache/mvn/all
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+    apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+      name: pv-cache-mvn-rpm
+      labels:
+        id: prod000016
+        app: cache-mvn-rpm
+        storage: cephfs
+    spec:
+      capacity:
+        storage: 20Gi
+      accessModes:
+        - ReadWriteMany
+      cephfs:
+        monitors:
+          - 10.10.10.101:6789
+          - 10.98.151.56:6789
+          - 10.10.10.102:6789
+        path: /cache/mvn/rpm
+        user: admin
+        secretRef:
+          name: ceph-admin-secret
+          namespace: kube-system
+        readOnly: false
+      persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-cache-marker
+  labels:
+    id: prod000019
+    app: cache-marker
+    storage: cephfs
+spec:
+  capacity:
+    storage: 20Gi
+  accessModes:
+    - ReadWriteMany
+  cephfs:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.98.151.56:6789
+      - 10.10.10.102:6789
+    path: /cache/marker
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain

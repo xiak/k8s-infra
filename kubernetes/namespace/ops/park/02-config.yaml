@@ -1,0 +1,278 @@
+---
+kind: ConfigMap
+apiVersion: v1
+metadata:
+  name: park-config
+  labels:
+    app: park
+    type: config
+data:
+  avamar.toml: |-
+    # This is a TOML document. Boom~
+    [[BuildMonitor]]
+      depot = "dudepot.asl.lab.emc.com"
+      release = "19.5.0"
+      min = "1"
+      max = "999"
+
+    [resources]
+      ###################################
+      # 1. ESXI 10.110.209.105
+      ###################################
+      [[resources.10-98-137]]
+      host = "10.110.209.105"
+      network = "10.98.137.51-255"
+      [resources.10-98-137.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-209-105-CI"
+        pool = "10.110.209.105/Resources/AVE"
+        folder = "CI-AVE"
+
+      [[resources.10-98-138]]
+      host = "10.110.209.105"
+      network = "10.98.138.51-255"
+      [resources.10-98-138.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-209-105-CI"
+        pool = "10.110.209.105/Resources/AVE"
+        folder = "CI-AVE"
+
+      ###################################
+      # 2. ESXI 10.110.209.182
+      ###################################
+      [[resources.10-98-137]]
+      host = "10.110.209.182"
+      network = "10.98.137.51-255"
+      [resources.10-98-137.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-209-182-CI"
+        pool = "10.110.209.182/Resources/AVE"
+        folder = "CI-AVE"
+
+      [[resources.10-98-138]]
+      host = "10.110.209.182"
+      network = "10.98.138.51-255"
+      [resources.10-98-138.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-209-182-CI"
+        pool = "10.110.209.182/Resources/AVE"
+        folder = "CI-AVE"
+
+      ###################################
+      # 3. ESXI 10.110.209.212
+      ###################################
+      [[resources.10-98-137]]
+      host = "10.110.209.212"
+      network = "10.98.137.51-255"
+      [resources.10-98-137.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-209-212-CI"
+        pool = "10.110.209.212/Resources/AVE"
+        folder = "CI-AVE"
+
+      [[resources.10-98-138]]
+      host = "10.110.209.212"
+      network = "10.98.138.51-255"
+      [resources.10-98-138.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-209-212-CI"
+        pool = "10.110.209.212/Resources/AVE"
+        folder = "CI-AVE"
+
+      ###################################
+      # 4. ESXI 10.110.213.23
+      ###################################
+      [[resources.10-98-137]]
+      host = "10.110.213.23"
+      network = "10.98.137.51-255"
+      [resources.10-98-137.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-213-23-CI"
+        pool = "10.110.213.23/Resources/AVE"
+        folder = "CI-AVE"
+
+      [[resources.10-98-138]]
+      host = "10.110.213.23"
+      network = "10.98.138.51-255"
+      [resources.10-98-138.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-213-23-CI"
+        pool = "10.110.213.23/Resources/AVE"
+        folder = "CI-AVE"
+
+      ###################################
+      # 5. ESXI 10.110.215.201
+      ###################################
+      [[resources.10-98-137]]
+      host = "10.110.215.201"
+      network = "10.98.137.51-255"
+      [resources.10-98-137.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-215-201-CI"
+        pool = "10.110.215.201/Resources/AVE"
+        folder = "CI-AVE"
+
+      [[resources.10-98-138]]
+      host = "10.110.215.201"
+      network = "10.98.138.51-255"
+      [resources.10-98-138.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-215-201-CI"
+        pool = "10.110.215.201/Resources/AVE"
+        folder = "CI-AVE"
+
+      ###################################
+      # 6. ESXI 10.110.215.209
+      ###################################
+      [[resources.10-98-137]]
+      host = "10.110.215.209"
+      network = "10.98.137.51-255"
+      [resources.10-98-137.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-215-209-CI"
+        pool = "10.110.215.209/Resources/AVE"
+        folder = "CI-AVE"
+
+      [[resources.10-98-138]]
+      host = "10.110.215.209"
+      network = "10.98.138.51-255"
+      [resources.10-98-138.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-215-209-CI"
+        pool = "10.110.215.209/Resources/AVE"
+        folder = "CI-AVE"
+
+      ###################################
+      # 7. ESXI 10.110.215.241
+      ###################################
+      [[resources.10-98-137]]
+      host = "10.110.215.241"
+      network = "10.98.137.51-255"
+      [resources.10-98-137.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-215-241-CI"
+        pool = "10.110.215.241/Resources/AVE"
+        folder = "CI-AVE"
+
+      [[resources.10-98-138]]
+      host = "10.110.215.241"
+      network = "10.98.138.51-255"
+      [resources.10-98-138.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-215-241-CI"
+        pool = "10.110.215.241/Resources/AVE"
+        folder = "CI-AVE"
+
+      ###################################
+      # 8. ESXI 10.110.216.21
+      ###################################
+      [[resources.10-98-137]]
+      host = "10.110.216.21"
+      network = "10.98.137.51-255"
+      [resources.10-98-137.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-216-21-CI"
+        pool = "10.110.216.21/Resources/AVE"
+        folder = "CI-AVE"
+
+      [[resources.10-98-138]]
+      host = "10.110.216.21"
+      network = "10.98.138.51-255"
+      [resources.10-98-138.vc]
+        host = "10.110.212.41"
+        user = "administrator@vsphere.local"
+        password = "examplePass"
+        dataCenter = "Datacenter"
+        dataStore = "DS-216-21-CI"
+        pool = "10.110.216.21/Resources/AVE"
+        folder = "CI-AVE"
+  application.toml: |-
+    # This is a TOML document
+  http.toml: |-
+    [server]
+        addr = "0.0.0.0:8000"
+        timeout = "1s"
+  memcache.toml: |-
+    demoExpire = "24h"
+
+    [demo]
+    name = "park"
+    proto = "tcp"
+    addr = "127.0.0.1:11211"
+    active = 50
+    idle = 10
+    dialTimeout = "100ms"
+    readTimeout = "200ms"
+    writeTimeout = "300ms"
+    idleTimeout = "80s"
+  mysql.toml: |-
+    [demo]
+    addr = "127.0.0.1:3306"
+    dsn = "{user}:{password}@tcp(127.0.0.1:3306)/{database}?timeout=1s&readTimeout=1s&writeTimeout=1s&parseTime=true&loc=Local&charset=utf8mb4,utf8"
+    readDSN = ["{user}:{password}@tcp(127.0.0.2:3306)/{database}?timeout=1s&readTimeout=1s&writeTimeout=1s&parseTime=true&loc=Local&charset=utf8mb4,utf8","{user}:{password}@tcp(127.0.0.3:3306)/{database}?timeout=1s&readTimeout=1s&writeTimeout=1s&parseTime=true&loc=Local&charset=utf8,utf8mb4"]
+    active = 20
+    idle = 10
+    idleTimeout ="4h"
+    queryTimeout = "200ms"
+    execTimeout = "300ms"
+    tranTimeout = "400ms"
+  redis.toml: |-
+    demoExpire = "24h"
+
+    [demo]
+    name = "park"
+    proto = "tcp"
+    addr = "127.0.0.1:6389"
+    idle = 10
+    active = 10
+    dialTimeout = "1s"
+    readTimeout = "1s"
+    writeTimeout = "1s"
+    idleTimeout = "10s"
+
+

@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-p4
+  labels:
+    id: prod000012
+    app: perforce
+    storage: cephfs
+spec:
+  capacity:
+    storage: 256Gi
+  accessModes:
+    - ReadWriteMany
+  cephfs:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    path: /p4
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain

@@ -1,0 +1,51 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: park
+  namespace: ops
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: park
+  template:
+    metadata:
+      labels:
+        app: park
+    spec:
+      containers:
+        - name: park
+          image: hub.drm.lab.emc.com/avamar/park:0.0.1-alpine
+          imagePullPolicy: IfNotPresent
+          command: ["park"]
+          args: ["-conf", "/configs"]
+          ports:
+            - containerPort: 8000
+          resources: {}
+
+          volumeMounts:
+
+          - name: config-volume
+            mountPath: /configs
+      volumes:
+# BUG: https://github.com/go-kratos/kratos/issues/355
+#        - name: config-volume
+#          configMap:
+#            name: park-config
+        - name: config-volume
+          persistentVolumeClaim:
+            claimName: pvc-park-config
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: park
+  namespace: ops
+spec:
+  selector:
+    app: park
+  ports:
+    - name: http
+      port: 80
+      targetPort: 8000

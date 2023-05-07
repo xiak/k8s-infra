@@ -1,0 +1,9 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: hub-robot
+spec:
+  type: image
+  params:
+    - name: url
+      value: hub.datadomain.com/av/robot

@@ -1,0 +1,57 @@
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-gitea
+  labels:
+    id: prod000001
+    app: gitea
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 2Ti
+  accessModes:
+    - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: git
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain
+
+---
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: pv-gitea-mysql
+  labels:
+    id: prod000002
+    app: gitea
+    type: ceph-rbd
+spec:
+  capacity:
+    storage: 512Gi
+  accessModes:
+    - ReadWriteOnce
+  rbd:
+    monitors:
+      - 10.10.10.101:6789
+      - 10.10.10.102:6789
+      - 10.10.10.102:6789
+    pool: av.rbd
+    image: git.mysql
+    user: admin
+    secretRef:
+      name: ceph-admin-secret
+      namespace: kube-system
+    fsType: xfs
+    readOnly: false
+  persistentVolumeReclaimPolicy: Retain

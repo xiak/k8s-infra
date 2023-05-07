@@ -1,0 +1,223 @@
+# This is a TOML document. Boom~
+[[BuildMonitor]]
+  depot = "dudepot.asl.lab.emc.com"
+  release = "19.5.0"
+  min = "1"
+  max = "999"
+
+[resources]
+  ###################################
+  # 1. ESXI 10.110.209.105
+  ###################################
+  [[resources.10-198-137]]
+  host = "10.110.209.105"
+  network = "10.198.137.51-255"
+  [resources.10-198-137.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-209-105-CI"
+    pool = "10.110.209.105/Resources/AVE"
+    folder = "CI-AVE"
+
+  [[resources.10-198-138]]
+  host = "10.110.209.105"
+  network = "10.198.138.51-255"
+  [resources.10-198-138.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-209-105-CI"
+    pool = "10.110.209.105/Resources/AVE"
+    folder = "CI-AVE"
+
+  ###################################
+  # 2. ESXI 10.110.209.182
+  ###################################
+  [[resources.10-198-137]]
+  host = "10.110.209.182"
+  network = "10.198.137.51-255"
+  [resources.10-198-137.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-209-182-CI"
+    pool = "10.110.209.182/Resources/AVE"
+    folder = "CI-AVE"
+
+  [[resources.10-198-138]]
+  host = "10.110.209.182"
+  network = "10.198.138.51-255"
+  [resources.10-198-138.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-209-182-CI"
+    pool = "10.110.209.182/Resources/AVE"
+    folder = "CI-AVE"
+
+  ###################################
+  # 3. ESXI 10.110.209.212
+  ###################################
+  [[resources.10-198-137]]
+  host = "10.110.209.212"
+  network = "10.198.137.51-255"
+  [resources.10-198-137.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-209-212-CI"
+    pool = "10.110.209.212/Resources/AVE"
+    folder = "CI-AVE"
+
+  [[resources.10-198-138]]
+  host = "10.110.209.212"
+  network = "10.198.138.51-255"
+  [resources.10-198-138.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-209-212-CI"
+    pool = "10.110.209.212/Resources/AVE"
+    folder = "CI-AVE"
+
+  ###################################
+  # 4. ESXI 10.110.213.23
+  ###################################
+  [[resources.10-198-137]]
+  host = "10.110.213.23"
+  network = "10.198.137.51-255"
+  [resources.10-198-137.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-213-23-CI"
+    pool = "10.110.213.23/Resources/AVE"
+    folder = "CI-AVE"
+
+  [[resources.10-198-138]]
+  host = "10.110.213.23"
+  network = "10.198.138.51-255"
+  [resources.10-198-138.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-213-23-CI"
+    pool = "10.110.213.23/Resources/AVE"
+    folder = "CI-AVE"
+
+  ###################################
+  # 5. ESXI 10.110.215.201
+  ###################################
+  [[resources.10-198-137]]
+  host = "10.110.215.201"
+  network = "10.198.137.51-255"
+  [resources.10-198-137.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-215-201-CI"
+    pool = "10.110.215.201/Resources/AVE"
+    folder = "CI-AVE"
+
+  [[resources.10-198-138]]
+  host = "10.110.215.201"
+  network = "10.198.138.51-255"
+  [resources.10-198-138.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-215-201-CI"
+    pool = "10.110.215.201/Resources/AVE"
+    folder = "CI-AVE"
+
+  ###################################
+  # 6. ESXI 10.110.215.209
+  ###################################
+  [[resources.10-198-137]]
+  host = "10.110.215.209"
+  network = "10.198.137.51-255"
+  [resources.10-198-137.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-215-209-CI"
+    pool = "10.110.215.209/Resources/AVE"
+    folder = "CI-AVE"
+
+  [[resources.10-198-138]]
+  host = "10.110.215.209"
+  network = "10.198.138.51-255"
+  [resources.10-198-138.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-215-209-CI"
+    pool = "10.110.215.209/Resources/AVE"
+    folder = "CI-AVE"
+
+  ###################################
+  # 7. ESXI 10.110.215.241
+  ###################################
+  [[resources.10-198-137]]
+  host = "10.110.215.241"
+  network = "10.198.137.51-255"
+  [resources.10-198-137.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-215-241-CI"
+    pool = "10.110.215.241/Resources/AVE"
+    folder = "CI-AVE"
+
+  [[resources.10-198-138]]
+  host = "10.110.215.241"
+  network = "10.198.138.51-255"
+  [resources.10-198-138.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-215-241-CI"
+    pool = "10.110.215.241/Resources/AVE"
+    folder = "CI-AVE"
+
+  ###################################
+  # 8. ESXI 10.110.216.21
+  ###################################
+  [[resources.10-198-137]]
+  host = "10.110.216.21"
+  network = "10.198.137.51-255"
+  [resources.10-198-137.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-216-21-CI"
+    pool = "10.110.216.21/Resources/AVE"
+    folder = "CI-AVE"
+
+  [[resources.10-198-138]]
+  host = "10.110.216.21"
+  network = "10.198.138.51-255"
+  [resources.10-198-138.vc]
+    host = "10.110.212.41"
+    user = "administrator@vsphere.local"
+    password = "Chang3M3Now.MC"
+    dataCenter = "Datacenter"
+    dataStore = "DS-216-21-CI"
+    pool = "10.110.216.21/Resources/AVE"
+    folder = "CI-AVE"

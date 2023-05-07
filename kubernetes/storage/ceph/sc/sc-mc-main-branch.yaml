@@ -1,0 +1,22 @@
+# kubectl create secret generic ceph-secret --type="kubernetes.io/rbd" \
+#  --from-literal=key='QVFEQ1pMdFhPUnQrSxhBQUFYaERWNHJsZ3BsMxNjcDR6RFZST0E9PQ==' \
+#  --namespace=mc-main-branch
+# NOTE: you must create a secret in your namespace
+---
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: sc-mc-main-branch
+provisioner: kubernetes.io/rbd
+parameters:
+  monitors: 10.10.10.101:6789,10.10.10.102:6789,10.10.10.103:6789
+  pool: av.rbd
+  adminId: admin
+  adminSecretName: ceph-admin-secret
+  adminSecretNamespace: kube-system
+  userId: admin
+  userSecretName: ceph-secret
+  userSecretNamespace: mc-main-branch
+  fsType: xfs
+  imageFormat: "2"
+  imageFeatures: "layering"

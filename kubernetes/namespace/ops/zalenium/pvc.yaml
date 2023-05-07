@@ -1,0 +1,39 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-zalenium-data
+  labels:
+    app: zalenium
+    type: ceph-fs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 512Gi
+  selector:
+    matchLabels:
+      id: prod000003
+      app: zalenium
+      type: ceph-fs
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-zalenium-video
+  labels:
+    app: zalenium
+    type: ceph-fs
+spec:
+  accessModes:
+    - ReadWriteMany
+  resources:
+    requests:
+      storage: 1Ti
+  selector:
+    matchLabels:
+      id: prod000004
+      app: zalenium
+      type: ceph-fs

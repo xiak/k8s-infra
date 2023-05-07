@@ -1,0 +1,114 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-harbor-registry
+  labels:
+    app: harbor
+    type: ceph-rbd
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 2Ti
+  selector:
+    matchLabels:
+      id: prod000005
+      app: harbor
+      type: ceph-rbd
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-harbor-chart
+  labels:
+    app: harbor
+    type: ceph-rbd
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  selector:
+    matchLabels:
+      id: prod000006
+      app: harbor
+      type: ceph-rbd
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-harbor-job
+  labels:
+    app: harbor
+    type: ceph-rbd
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 25Gi
+  selector:
+    matchLabels:
+      id: prod000007
+      app: harbor
+      type: ceph-rbd
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-harbor-db
+  labels:
+    app: harbor
+    type: ceph-rbd
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 250Gi
+  selector:
+    matchLabels:
+      id: prod000008
+      app: harbor
+      type: ceph-rbd
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-harbor-redis
+  labels:
+    app: harbor
+    type: ceph-rbd
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  selector:
+    matchLabels:
+      id: prod000009
+      app: harbor
+      type: ceph-rbd
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-harbor-trivy
+  labels:
+    app: harbor
+    type: ceph-rbd
+spec:
+  accessModes:
+    - ReadWriteOnce
+  resources:
+    requests:
+      storage: 50Gi
+  selector:
+    matchLabels:
+      id: prod000010
+      app: harbor
+      type: ceph-rbd

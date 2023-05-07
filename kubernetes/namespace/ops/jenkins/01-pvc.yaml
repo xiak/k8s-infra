@@ -1,0 +1,22 @@
+# The path of pv creation is kubernetes/storage/ceph/pv/pv-jenkis.yaml
+
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pvc-jenkins
+  labels:
+    id: prod000011
+    app: jenkins
+    type: ceph-rbd
+spec:
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+      storage: 512Gi
+  selector:
+    matchLabels:
+      id: prod000011
+      app: jenkins
+      type: ceph-rbd

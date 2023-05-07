@@ -1,0 +1,11 @@
+apiVersion: tekton.dev/v1alpha1
+kind: PipelineResource
+metadata:
+  name: git-test-infra
+spec:
+  type: git
+  params:
+    - name: revision
+      value: master
+    - name: url
+      value: http://git.datadomain.com/avamar/test-infra
